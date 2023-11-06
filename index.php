@@ -6,7 +6,7 @@ class Movie {
     public $genre;
     public $image;
 
-    public function __construct (string $_title, int $_year, string $_genre, Media $_image) {
+    public function __construct (string $_title, int $_year, array $_genre, Media $_image) {
         $this -> title = $_title;
         $this -> year = $_year;
         $this -> genre = $_genre;
@@ -29,14 +29,12 @@ class Media {
 }
 
 $movies = [
-    new Movie ('V for Vendetta', '2005', 'Drama', new Media ('VForVendetta.jpg', 'V')),
-    new Movie ('The butterfly effect', '2004', 'Drama', new Media ('TheButterflyEffect.jpg', 'TBE')),
-    new Movie ('Limitless', '2011', 'Thriller', new Media ('Limitless.jpg', 'Limitless'))
+    new Movie ('V for Vendetta', '2005', ['Drama', 'Action'], new Media ('VForVendetta.jpg', 'V')),
+    new Movie ('The butterfly effect', '2004', ['Drama', 'Sci-fi'], new Media ('TheButterflyEffect.jpg', 'TBE')),
+    new Movie ('Limitless', '2011', ['Thriller'], new Media ('Limitless.jpg', 'Limitless'))
 ]
 
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +47,7 @@ $movies = [
     <?php foreach ($movies as $movie): ?> 
     <p> <?php echo $movie->title ?></p>
     <p> <?php echo $movie->year ?></p>
-    <p> <?php echo $movie->genre ?></p>
+    <p> <?php echo implode('/', $movie->genre) ?></p>
     <img src="./img/<?php echo $movie->image->name_image ?>" alt="<?php echo $movie->image->name?>">
     <?php endforeach; ?>
 </body>
