@@ -18,7 +18,7 @@ require_once __DIR__ . '/db.php';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     
-    <title>Movies</title>
+    <title>Production</title>
 </head>
 <body>
 
@@ -29,7 +29,8 @@ require_once __DIR__ . '/db.php';
             <img src="./img/<?php echo $movie->image->name_image ?>" alt="<?php echo $movie->image->name?>" class="card-img-top" alt="V">
             <div class="card-body">
                 <h5 class="card-title"><?php echo $movie->title ?></h5>
-                <p class="card-text"></p>
+                <p class="card-text">Anno: <?php echo $movie->published_year ?></p>
+                <p class="card-text">Durata: <?php echo $movie->running_time ?> minuti</p>
                 <p class="card-text"><?php echo implode('/', $movie->genre) ?></p>
             </div>
         </div>
@@ -44,7 +45,8 @@ require_once __DIR__ . '/db.php';
             <img src="./img/<?php echo $tvSerie->image->name_image ?>" alt="<?php echo $movie->image->name?>" class="card-img-top" alt="V">
             <div class="card-body">
                 <h5 class="card-title"><?php echo $tvSerie->title ?></h5>
-                <p class="card-text"></p>
+                <p class="card-text"><?php echo $tvSerie->aired_from_year ?>-<?php echo $tvSerie->aired_to_year ?></p>
+                <p class="card-text"><?php echo $tvSerie->number_of_episodes ?> episodi, <?php echo $tvSerie->number_of_seasons ?> puntate</p>
                 <p class="card-text"><?php echo implode('/', $tvSerie->genre) ?></p>
             </div>
         </div>
