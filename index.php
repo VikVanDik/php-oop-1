@@ -1,10 +1,15 @@
 <?php 
+try {
+    require_once __DIR__ . '/Models/Production.php';
+    require_once __DIR__ . '/Models/Movie.php';
+    require_once __DIR__ . '/Models/TVSerie.php';
+    require_once __DIR__ . '/Models/Media.php';
+    require_once __DIR__ . '/db.php';
 
-require_once __DIR__ . '/Models/Production.php';
-require_once __DIR__ . '/Models/Movie.php';
-require_once __DIR__ . '/Models/TVSerie.php';
-require_once __DIR__ . '/Models/Media.php';
-require_once __DIR__ . '/db.php';
+} catch (Exception $e) {
+    $error = $e -> getMessage();
+}
+
 
 ?>
 
@@ -21,7 +26,12 @@ require_once __DIR__ . '/db.php';
     <title>Production</title>
 </head>
 <body>
-
+    <?php if (isset($error)): ?>
+    <div class="alert alert-danger" role="alert">
+        A simple danger alert—check it out!
+    </div>
+    
+    <?php else: ?>
     <h1 class="text-center">Movies</h1>
     <div class="container d-flex justify-content-around my-5">
         <?php foreach ($movies as $movie): ?> 
@@ -30,7 +40,7 @@ require_once __DIR__ . '/db.php';
             <div class="card-body">
                 <h5 class="card-title"><?php echo $movie->title ?></h5>
                 <p class="card-text">Anno: <?php echo $movie->published_year ?></p>
-                <p class="card-text">Durata: <?php echo $movie->running_time ?> minuti</p>
+                <p class="card-text">Durata: <?php echo $movie->running_time ?>minuti</p>
                 <p class="card-text"><?php echo implode('/', $movie->genre) ?></p>
             </div>
         </div>
@@ -52,7 +62,7 @@ require_once __DIR__ . '/db.php';
         </div>
         <?php endforeach; ?>
     </div>
-
+    <?php endif; ?>
     
 </div>
 </body>

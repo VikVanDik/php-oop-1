@@ -20,6 +20,5 @@ class TVSerie extends Production {
         parent::__construct($_title, $_genre, $_image);
 
     }
-
 }
 ?>
