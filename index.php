@@ -57,7 +57,7 @@ try {
                 <h5 class="card-title"><?php echo $tvSerie->title ?></h5>
                 <p class="card-text"><?php echo $tvSerie->aired_from_year ?>-<?php echo $tvSerie->aired_to_year ?></p>
                 <p class="card-text"><?php echo $tvSerie->number_of_episodes ?> episodi, <?php echo $tvSerie->number_of_seasons ?> puntate</p>
-                <p class="card-text"><?php echo implode('/', $tvSerie->genre) ?></p>
+                <p class="card-text"><?php echo implode('/', $tvSerie->emptyArrayGenre()) ?></p>
             </div>
         </div>
         <?php endforeach; ?>
